@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx
+  annotations:
+    ad.datadoghq.com/service.checks: |
+      {
+        "http_check": {
+          "instances": [
+            {
+              "url":"http://%%host%%:%%port%%",
+              "timeout":1
+            }
+          ]
+        }
+      }  
+  name: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - name: http
+    port: 8090
+    targetPort: 80

@@ -1,0 +1,26 @@
+apiVersion: datadoghq.com/v2alpha1
+kind: DatadogAgent
+metadata:
+  name: datadog
+spec:
+  global:
+    credentials:
+      apiKey: <DATADOG_API_KEY>
+      appKey: <DATADOG_APP_KEY>
+  features:
+    clusterChecks:
+      enabled: true
+      useClusterChecksRunners: true
+  override:
+    clusterAgent:
+      replicas: 2
+      extraConfd:
+        configDataMap:
+          mysql.yaml: |-
+            cluster_check: true
+            init_config:
+            instances:
+              - host: "mydb.abcdef123456.us-east-1.rds.amazonaws.com"
+                port: 3306
+                user: datadog
+                password: "123"

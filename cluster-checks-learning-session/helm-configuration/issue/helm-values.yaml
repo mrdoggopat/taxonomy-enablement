@@ -1,0 +1,14 @@
+datadog:
+  confd:
+    mysql.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - host: "mydb.abcdef123456.us-east-1.rds.amazonaws.com"
+          port: 3306
+          user: datadog
+          password: "123"
+  clusterChecks:
+    enabled: true
+clusterAgent:
+  enabled: true
