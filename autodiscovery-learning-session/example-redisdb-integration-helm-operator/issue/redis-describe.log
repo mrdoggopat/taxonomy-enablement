@@ -1,0 +1,36 @@
+Name:         redis-677864fb5b-m5pbm
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.76.2
+Start Time:   Thu, 04 Dec 2025 10:58:52 -0500
+Labels:       app=redis
+              pod-template-hash=6db6c9f7c7
+Annotations:  <none> 
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:           172.17.0.4
+Controlled By:  ReplicaSet/redis-6db6c9f7c7
+Containers:
+  my-redis:
+    Container ID:  docker://7781f0cd6257d9be62566efea847eb568d19eac12bc340913bd926ba1f20d810
+    Image:         gcr.io/bigcorp/redis-secure:latest
+    Image ID:      docker-pullable://redis@sha256:091a7b5de688f283b30a4942280b64cf822bbdab0abfb2d2ce6db989f2d3c3f4
+    Ports:         6379/TCP, 7000/TCP
+    Host Ports:    0/TCP, 0/TCP
+    Command:
+      /bin/bash
+      -c
+      --
+    Args:
+      redis-server --requirepass my-password
+    State:          Running
+    Ready:          True
+    Restart Count:  0
+    Liveness:       http-get http://:6379/live delay=15s timeout=5s period=15s #success=1 #failure=6
+    Environment:
+      REDIS_CLI_PORT:          6379
+      REDIS_PORT:              6379
+      REDIS_ADMIN_PORT:        7000
+      REDIS_ADMIN_PASSWORD:    <set to the key 'password' in secret 'redis-password'>  Optional: false
+      REDIS_SSL_VERIFICATION:  true

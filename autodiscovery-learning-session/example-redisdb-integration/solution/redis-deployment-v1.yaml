@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-test
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+      annotations:
+        ad.datadoghq.com/my-redis.check_names: '["redisdb"]'
+        ad.datadoghq.com/my-redis.init_configs: '[{}]'
+        ad.datadoghq.com/my-redis.instances: |
+          [
+            {
+              "host": "%%host%%",
+              "password": "my-password",
+              "port": "%%port%%",
+              "tags": [
+                "hello:world",
+                "foo:bar"
+              ]                
+            }
+          ] 
+    spec:
+      containers:
+      - name: my-redis
+        image: busybox
+        imagePullPolicy: Always
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 5; 
+          echo `date '+%FT%T'` example stdout log; 
+          echo `date '+%FT%T'` example stderr log 1>&2;
+        done;"
+        ]
+

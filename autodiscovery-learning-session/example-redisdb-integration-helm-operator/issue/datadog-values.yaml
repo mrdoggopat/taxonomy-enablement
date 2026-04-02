@@ -1,0 +1,14 @@
+datadog:
+  # other configurations
+  confd:
+    redis.yaml: |-
+      ad_identifiers:
+        - redis
+      init_config:
+      instances:
+      - host: "%%host%%"
+        port: "%%port%%"
+        password: my-password
+        tags:
+        - hello:world
+        - foo:bar

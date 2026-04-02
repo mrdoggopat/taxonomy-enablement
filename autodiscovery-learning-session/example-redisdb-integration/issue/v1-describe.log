@@ -1,0 +1,29 @@
+Name:         redis-6db6c9f7c7-5zchs
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Wed, 14 Sep 2022 14:27:28 -0700
+Labels:       app=redis
+              pod-template-hash=6db6c9f7c7
+Annotations:  ad.datadoghq.com/my-redis.check_names: ["redisdb"]
+              ad.datadoghq.com/my-redis.init_configs: [{}]
+              ad.datadoghq.com/my-redis.instances:
+                [
+                  {
+                    "host": "%%host%%",
+                    "password": "my-password"
+                    "port": "%%port%%",
+                    "tags": [
+                      "hello:world",
+                      "foo:bar"
+                    ]                
+                  }
+                ]      
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:           172.17.0.4
+Controlled By:  ReplicaSet/redis-6db6c9f7c7
+Containers:
+  my-redis:
+# (...)

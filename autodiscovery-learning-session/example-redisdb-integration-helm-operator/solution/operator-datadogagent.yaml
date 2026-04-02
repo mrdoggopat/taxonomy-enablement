@@ -1,0 +1,20 @@
+apiVersion: "datadoghq.com/v2alpha1"
+kind: "DatadogAgent"
+metadata:
+  name: "datadog"  
+spec:
+  override:
+    nodeAgent:
+      extraConfd:
+        configDataMap:
+          redisdb.yaml: |-
+            ad_identifiers:
+              - redis-secure
+            init_config:
+            instances:
+            - host: "%%host%%"
+              port: "%%port_0%%"
+              password: my-password
+              tags:
+              - hello:world
+              - foo:bar
