@@ -1,0 +1,14 @@
+datadog:
+  # include this if you are testing this locally
+  apiKey: "<api key>"
+  clusterName: "test-cluster"
+  kubelet:
+    tlsVerify: false
+  # defaulted to true when not set
+  kubeStateMetricsCore:
+    enabled: true
+  # these 3 integrations error by default in minikube
+  ignoreAutoConfig:
+    - etcd
+    - kube_controller_manager
+    - kube_scheduler

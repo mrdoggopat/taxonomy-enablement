@@ -1,4 +1,10 @@
 datadog:
+  # include this if you are testing this locally
+  apiKey: "<api key>"
+  clusterName: "test-cluster"
+  kubelet:
+    tlsVerify: false
+  # other configurations
   clusterChecks:
     enabled: true
 clusterAgent:

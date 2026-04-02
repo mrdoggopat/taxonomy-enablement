@@ -3,10 +3,14 @@ kind: DatadogAgent
 metadata:
   name: datadog
 spec:
+# include this if you are testing this locally
   global:
     credentials:
-      apiKey: <DATADOG_API_KEY>
-      appKey: <DATADOG_APP_KEY>
+      apiKey: "<api key>"
+    clusterName: "test-cluster"
+    kubelet:
+      tlsVerify: false
+  # other configurations
   features:
     clusterChecks:
       enabled: true
