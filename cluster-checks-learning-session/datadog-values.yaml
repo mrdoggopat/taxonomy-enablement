@@ -1,0 +1,11 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  clusterName: test-cluster
+  # Disable kubelet TLS Verification in minikube
+  kubelet:
+    tlsVerify: false
+  # These 3 integrations error by default in minikube so adding this to avoid any noisy errors in the agent
+  ignoreAutoConfig:
+    - etcd
+    - kube_controller_manager 
+    - kube_scheduler 
