@@ -20,7 +20,7 @@ spec:
           [
             {
               "name": "my-http-check",
-              "url": "%%host%%"
+              "url": "http://%%host%%"
             }
           ] 
     spec:

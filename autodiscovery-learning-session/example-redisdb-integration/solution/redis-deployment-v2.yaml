@@ -21,7 +21,7 @@ spec:
               "instances": [
                 {
                   "host": "%%host%%",
-                  "port":"%%port%%",
+                  "port":"6379",
                   "password":"my-password",
                   "tags": [
                     "hello:world",

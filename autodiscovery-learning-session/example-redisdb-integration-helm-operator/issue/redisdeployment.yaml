@@ -13,21 +13,6 @@ spec:
     metadata:
       labels:
         app: redis
-      annotations:
-        ad.datadoghq.com/my-redis.check_names: '["redisdb"]'
-        ad.datadoghq.com/my-redis.init_configs: '[{}]'
-        ad.datadoghq.com/my-redis.instances: |
-          [
-            {
-              "host": "%%host%%",
-              "password": "my-password",
-              "port": "6379",
-              "tags": [
-                "hello:world",
-                "foo:bar"
-              ]                
-            }
-          ] 
     spec:
       containers:
       - name: my-redis
