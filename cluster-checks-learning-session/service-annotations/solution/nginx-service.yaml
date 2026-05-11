@@ -10,6 +10,7 @@ metadata:
           "instances": [
             {
               "url":"http://%%host%%:%%port%%",
+              "name": "My Nginx service",
               "timeout":1
             }
           ]
